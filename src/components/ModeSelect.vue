@@ -23,5 +23,6 @@ export default {
 <style>
 .mode-select__list {
 	list-style: none;
+	text-align: center;
 }
 </style>

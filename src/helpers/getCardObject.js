@@ -550,7 +550,7 @@ const getFileName = cardNumber => {
 };
 
 export default cardNumber => {
-	const cardObj = Object.assign({}, cards[cardNumber])
+	const cardObj = Object.assign({}, cards[cardNumber]);
 	cardObj.fileName = getFileName(cardNumber);
 	return cardObj;
 };

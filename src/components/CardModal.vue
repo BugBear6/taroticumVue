@@ -1,33 +1,33 @@
 <template>
 	<b-modal
 		v-bind:id="cardId"
-		class="card-modal"
+		modal-class="card-modal"
 		size="lg"
 		ok-only
 		scrollable
 		v-bind:title="cardData.name">
 		<div>
-		<b-tabs content-class="mt-3" fill>
-			<b-tab title="Description" active
-				class="card-modal__content">
-				<CardModalArcanaData
-					v-bind:arcana="cardData.arcana"
-					v-bind:number="cardData.number"
-					v-bind:color="cardData.color"
-				/>
-				<div class="my-4">
-					<div v-html="cardData.desc"></div>
-				</div>
-			</b-tab>
-			<b-tab title="Image">
-				<div class="card-modal__img-holder">
-					<img
-						class="card-modal__img"
-						v-bind:src="cardUrl"
-						v-bind:alt="cardData.name">
-				</div>
-			</b-tab>
-		</b-tabs>
+			<b-tabs content-class="mt-3" fill>
+				<b-tab title="Description" active
+					class="card-modal__content">
+					<CardModalArcanaData
+						v-bind:arcana="cardData.arcana"
+						v-bind:number="cardData.number"
+						v-bind:color="cardData.color"
+					/>
+					<div class="my-4">
+						<div v-html="cardData.desc"></div>
+					</div>
+				</b-tab>
+				<b-tab title="Image">
+					<div class="card-modal__img-holder">
+						<img
+							class="card-modal__img"
+							v-bind:src="cardUrl"
+							v-bind:alt="cardData.name">
+					</div>
+				</b-tab>
+			</b-tabs>
 		</div>
 	</b-modal>
 </template>
@@ -53,11 +53,11 @@ export default {
 </script>
 
 <style>
-.modal-body {
+.card-modal .modal-body {
 	padding: 0 !important;
 }
 
-.modal-header {
+.card-modal .modal-header {
 	border-bottom: 0 !important;
 }
 
