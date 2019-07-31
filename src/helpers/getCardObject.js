@@ -545,12 +545,14 @@ const cards = {
 	}
 };
 
-const getFileName = cardNumber => {
+export const getCardFileName = cardNumber => {
 	return `card_${cardNumber}.jpg`;
 };
 
-export default cardNumber => {
-	const cardObj = Object.assign({}, cards[cardNumber]);
-	cardObj.fileName = getFileName(cardNumber);
-	return cardObj;
+export const getCardObject = cardNumber => {
+	if (cardNumber) {
+		const cardObj = Object.assign({}, cards[cardNumber]);
+		return cardObj;
+	}
+	return Object.assign({}, cards);
 };

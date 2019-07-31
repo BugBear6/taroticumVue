@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import getCards from '../helpers/getCards';
+import { getCards } from '../helpers/getCards';
 import Card from './Card';
 
 export default {
@@ -14,8 +14,7 @@ export default {
 		Card
 	},
 	props: [
-		'cardData',
-		'cardNumber'
+		'cardData'
 	],
 	data() {
 		return {

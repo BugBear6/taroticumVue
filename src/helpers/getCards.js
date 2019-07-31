@@ -1,4 +1,4 @@
-import getCardObject from './getCardObject';
+import { getCardObject } from './getCardObject';
 
 // returns number from 1 to 68
 const getNumber = () => {
@@ -31,7 +31,29 @@ const getFiveCards = () => {
 	return cardsNumbers;
 };
 
-export default (mode) => {
+const sortByNumber = (objA, objB) => {
+	return objA.number - objB.number;
+};
+
+export const getAllCards = () => {
+	const cardsObj = getCardObject();
+	const cardsArr = Object.keys(cardsObj).map(key => cardsObj[key]);
+	const majorArr = cardsArr.filter(({arcana}) => arcana === 'Major').sort(sortByNumber);
+	const eyesArr = cardsArr.filter(({color}) => color === 'Eyes').sort(sortByNumber);
+	const crescentsArr = cardsArr.filter(({color}) => color === 'Crescents').sort(sortByNumber);
+	const hourglassessArr = cardsArr.filter(({color}) => color === 'Hourglasses').sort(sortByNumber);
+	const rosesArr = cardsArr.filter(({color}) => color === 'Roses').sort(sortByNumber);
+	const skullsArr = cardsArr.filter(({color}) => color === 'Skulls').sort(sortByNumber);
+	return majorArr.concat(
+		eyesArr,
+		crescentsArr,
+		hourglassessArr,
+		rosesArr,
+		skullsArr
+	);
+};
+
+export const getCards = (mode) => {
 	if (mode === 'single') {
 		return getSingleCard();
 	}

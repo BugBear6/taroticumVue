@@ -12,7 +12,6 @@
 				v-bind:key="index">
 				<Card
 					class="card--cards-list"
-					v-bind:cardNumber="index+1"
 					v-on:card-revealed="onCardRevealed"
 					v-bind:cardData="card"
 				/>
@@ -32,7 +31,7 @@
 <script>
 import Card from './Card';
 import Template from './Template';
-import getCards from '../helpers/getCards';
+import { getCards } from '../helpers/getCards';
 import { getTemplateObj } from '../helpers/getTemplates';
 
 export default {

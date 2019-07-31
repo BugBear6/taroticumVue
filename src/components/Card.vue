@@ -1,19 +1,18 @@
 <template>
-	<div class="card"
+	<div class="taroticum-card"
 		v-on:click="revealCard()">
-		<div class="card__face card__face--front"
-			v-if="!isRevealed">
+		<div class="taroticum-card__face"
+			v-if="!isRevealed && !alwaysReveal">
 			<img
-				class="card__img"
+				class="taroticum-card__img"
 				src="/img/tarot-cards/back.jpg"
 				alt="Back">
 		</div>
-		<div class="card__face card__face--back"
+		<div class="taroticum-card__face"
 			v-b-modal="getModalId()"
-			v-if="isRevealed">
+			v-if="isRevealed || alwaysReveal">
 			<img
-				class="card__img"
-				v-if="isRevealed"
+				class="taroticum-card__img"
 				v-bind:src="getCardUrl()"
 				v-bind:alt="cardData.name">
 		</div>
@@ -28,6 +27,7 @@
 <script>
 import { BModal, VBModal } from 'bootstrap-vue';
 import CardModal from './CardModal';
+import { getCardFileName } from '../helpers/getCardObject';
 
 export default {
 	name: 'Card',
@@ -38,7 +38,7 @@ export default {
 	},
 	props: [
 		'cardData',
-		'cardNumber'
+		'alwaysReveal'
 	],
 	components: {
 		'b-modal': BModal,
@@ -50,7 +50,7 @@ export default {
 				this.$emit('card-revealed');
 		},
 		getCardUrl() {
-			return `/img/tarot-cards/${this.cardData.fileName}`;
+			return `/img/tarot-cards/${getCardFileName(this.cardData.id)}`;
 		},
 		getModalId() {
 			return `modal-${this.cardData.id}`;
@@ -60,7 +60,7 @@ export default {
 </script>
 
 <style>
-.card {
+.taroticum-card {
 	width: 250px;
 	height: 429px;
 	position: relative;
@@ -71,20 +71,20 @@ export default {
 	filter: brightness(.8);
 }
 
-.card:hover {
+.taroticum-card:hover {
 	filter: brightness(1);
 }
 
-.card--cards-list.card {
+.card--cards-list.taroticum-card {
 	width: 125px;
 	height: 214px;
 }
 
-.card__face {
+.taroticum-card__face {
 	width: 100%;
 }
 
-.card__img {
+.taroticum-card__img {
 	width: 100%;
 	background: black;
 	height: auto;
