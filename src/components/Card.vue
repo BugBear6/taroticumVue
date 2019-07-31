@@ -1,8 +1,5 @@
 <template>
 	<div class="card"
-		v-bind:class="{
-			'card--card-inactive': cardToReveal !== cardNumber && !isRevealed
-		}"
 		v-on:click="revealCard()">
 		<div class="card__face card__face--front"
 			v-if="!isRevealed">
@@ -41,24 +38,16 @@ export default {
 	},
 	props: [
 		'cardData',
-		'cardsRevealed',
 		'cardNumber'
 	],
-	computed: {
-		cardToReveal() {
-			return this.cardsRevealed + 1;
-		}
-	},
 	components: {
 		'b-modal': BModal,
 		CardModal
 	},
 	methods: {
 		revealCard() {
-			if (this.cardToReveal === this.cardNumber) {
 				this.isRevealed = true;
 				this.$emit('card-revealed');
-			}
 		},
 		getCardUrl() {
 			return `/img/tarot-cards/${this.cardData.fileName}`;
@@ -78,12 +67,12 @@ export default {
 	background: black;
 	cursor: pointer;
 	transition: 1s;
+		-webkit-filter: brightness(.8);
+	filter: brightness(.8);
 }
 
-.card--card-inactive {
-	-webkit-filter: brightness(0.4);
-	filter: brightness(0.4);
-	cursor: not-allowed;
+.card:hover {
+	filter: brightness(1);
 }
 
 .card--cards-list.card {
@@ -97,12 +86,8 @@ export default {
 
 .card__img {
 	width: 100%;
+	background: black;
 	height: auto;
-	transition: .2s;
-	box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 }
-.card__img:hover {
-	box-shadow: 0 0 4px 2px rgba(0, 0, 0,.6);
-	transform: scale(1.08);
-}
+
 </style>

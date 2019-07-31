@@ -33,6 +33,6 @@ export default {
 }
 .container {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 </style>

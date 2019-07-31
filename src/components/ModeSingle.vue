@@ -13,7 +13,10 @@ export default {
 	components: {
 		Card
 	},
-	props: {},
+	props: [
+		'cardData',
+		'cardNumber'
+	],
 	data() {
 		return {
 			card: null

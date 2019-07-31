@@ -76,7 +76,7 @@ export default {
 	align-items: center;
 }
 .card-modal__img {
-	width: 320px;
+	width: 290px;
 	height: auto;
 	text-align: center;
 	margin-bottom: 8px;

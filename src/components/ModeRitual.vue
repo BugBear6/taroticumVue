@@ -7,7 +7,6 @@
 				<Card
 					class="card--cards-list"
 					v-bind:cardNumber="index+1"
-					v-bind:cardsRevealed="cardsRevealed"
 					v-on:card-revealed="onCardRevealed"
 					v-bind:cardData="card" />
 			</li>
@@ -27,8 +26,7 @@ export default {
   name: 'ModeRitual',
 	data() {
 		return {
-			cards: [],
-			cardsRevealed: 0
+			cards: []
 		};
 	},
 	methods: {
@@ -39,7 +37,7 @@ export default {
 			return `card-item-${index+1}`;
 		},
 		onCardRevealed() {
-			this.cardsRevealed += 1;
+			// 
 		}
 	},
 	components: {
