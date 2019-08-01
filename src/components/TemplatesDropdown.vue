@@ -7,7 +7,7 @@
 			text="Reading Templates"
 			variant="link"
 			class="m-md-2">
-			 <b-dropdown-text style="width: 360px;">
+				<b-dropdown-text style="width: 360px;">
 				<i>Here are the templates of the things you can learn.</i>
 			</b-dropdown-text>
 			<b-dropdown-divider></b-dropdown-divider>

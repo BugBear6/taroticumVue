@@ -1,12 +1,10 @@
 <template>
 	<div class="mode-gallery">
-		<ModeGalleryFilters
-			v-bind:filters="filters"
-		/>
+		<ModeGalleryFilters v-bind:filters="filters" />
 		<b-row>
 			<b-col
-				v-for="(card, index) in cardsFiltered"
-				v-bind:key="index"
+				v-for="card in cardsFiltered"
+				v-bind:key="card.id"
 				cols="2">
 				<b-card class="card-item border-0">
 					<Card
@@ -41,7 +39,8 @@ export default {
 				hourglasses: false,
 				roses: false,
 				skulls: false
-			}
+			},
+			searchPhrase: ''
 		}
 	},
 	methods: {
@@ -66,26 +65,53 @@ export default {
 		},
 		getActiveFilters() {
 			return Object.keys(this.filters).filter(key => this.filters[key]);
+		},
+		updateSearchPhrase(newSearchPhrase) {
+			this.searchPhrase = newSearchPhrase
+		},
+		runSearch(newSearchPhrase) {
+
 		}
 	},
 	computed: {
 		cardsFiltered() {
-			if (this.filters.all) {
+			if (this.filters.all && !this.searchPhrase) {
 				return this.cards;
-			} 
-			const activeFilters = this.getActiveFilters();
-			const filtered = this.cards.filter(cardObj => {
-				const color = cardObj.color ? cardObj.color.toLowerCase() : '';
-				const arcana = cardObj.arcana ? cardObj.arcana.toLowerCase() : '';
-				if (activeFilters.indexOf(color) > -1 || activeFilters.indexOf(arcana) > -1 ) {
-					return cardObj;
-				}
-			})
+			}
+
+			// clone cards array
+			let filtered = [...this.cards];
+
+			if (!this.filters.all) {
+				const activeFilters = this.getActiveFilters();
+				filtered = filtered.filter(cardObj => {
+					const color = cardObj.color ? cardObj.color.toLowerCase() : '';
+					const arcana = cardObj.arcana ? cardObj.arcana.toLowerCase() : '';
+					if (activeFilters.indexOf(color) > -1 || activeFilters.indexOf(arcana) > -1 ) {
+						return cardObj;
+					}
+				});
+			}
+
+			if (this.searchPhrase) {
+				const searchPhaseLowercase = this.searchPhrase.toLowerCase();
+				filtered = filtered.filter(cardObj => {
+					const cardNameLowercase = cardObj.name.toLowerCase();
+					return cardNameLowercase.includes(searchPhaseLowercase);
+				});
+			}
+
 			return filtered;
 		}
 	},
 	created() {
 		this.$root.$on('toggle-filter', this.toggleFilter);
+		this.$root.$on('update-search-phrase', this.updateSearchPhrase);
+	},
+	watch: {
+		searchPhrase(newSearchPhrase) {
+			this.runSearch(newSearchPhrase);
+		}
 	},
 	components: {
 		Card,

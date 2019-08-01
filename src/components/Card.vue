@@ -46,8 +46,10 @@ export default {
 	},
 	methods: {
 		revealCard() {
+			if (typeof this.alwaysReveal !=='undefined' && !this.alwaysReveal) {
 				this.isRevealed = true;
 				this.$emit('card-revealed');
+			}
 		},
 		getCardUrl() {
 			return `/img/tarot-cards/${getCardFileName(this.cardData.id)}`;

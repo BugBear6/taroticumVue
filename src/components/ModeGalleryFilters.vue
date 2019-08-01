@@ -25,21 +25,25 @@
 		<ModeGalleryFilter
 			v-bind:filters="filters"
 			v-bind:filterName="'Skulls'" />
+		<ModeGallerySearch />
 	</b-nav>
 	</div>
 </template>
 
 <script>
 import ModeGalleryFilter from './ModeGalleryFilter';
+import ModeGallerySearch from './ModeGallerySearch';
 import { BNav } from 'bootstrap-vue';
 
 export default {
 	name: 'ModeGalleryFilters',
 	props: [
+		'searchPhrase',
 		'filters'
 	],
 	components: {
 		ModeGalleryFilter,
+		ModeGallerySearch,
 		'b-nav': BNav,
 	}
 };
