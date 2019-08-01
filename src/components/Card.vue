@@ -46,7 +46,7 @@ export default {
 	},
 	methods: {
 		revealCard() {
-			if (typeof this.alwaysReveal !=='undefined' && !this.alwaysReveal) {
+			if (typeof this.alwaysReveal === 'undefined' || !this.alwaysReveal) {
 				this.isRevealed = true;
 				this.$emit('card-revealed');
 			}
@@ -72,24 +72,31 @@ export default {
 		-webkit-filter: brightness(.8);
 	filter: brightness(.8);
 }
-
 .taroticum-card:hover {
 	filter: brightness(1);
 }
-
-.card--cards-list.taroticum-card {
+.taroticum-card__img {
+	width: 100%;
+	height: auto;
+	background: black;
+}
+.mode-gallery .taroticum-card {
 	width: 125px;
 	height: 214px;
 }
 
-.taroticum-card__face {
-	width: 100%;
+.mode-ritual .taroticum-card {
+	width: 95px;
+	height: 163px;
 }
 
-.taroticum-card__img {
-	width: 100%;
-	background: black;
-	height: auto;
+/* screen height over 780px */
+@media screen and ( min-height: 780px ) {
+	.mode-ritual .taroticum-card {
+		width: 125px;
+		height: 214px;
+	}
 }
+
 
 </style>

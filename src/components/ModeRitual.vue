@@ -78,7 +78,7 @@ export default {
 <style>
 .selected-template-info {
 	margin: 0;
-	font-size: 15px;
+	font-size: 16px;
 }
 .cards-list {
 	list-style: none;

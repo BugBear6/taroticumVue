@@ -5,7 +5,10 @@
 			<b-col
 				v-for="card in cardsFiltered"
 				v-bind:key="card.id"
-				cols="2">
+				lg="2"
+				md="3"
+				sm="6"
+				cols="12">
 				<b-card class="card-item border-0">
 					<Card
 						class="card--cards-list"
