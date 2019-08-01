@@ -61,7 +61,7 @@ export default {
 		arcana: 'Major',
 		color: null,
 		number: 5,
-		desc: '<p><i>This card represents the Archon Binah and the Principle of Community.</i></p> <p>Binah’s influence manifests as the family’s power over the individual, mistrust of the state and other authorities outside of the family, strengthened traditions, and the distrust of strangers.</p> Her grip is strong anywhere family ties are at their peak, including the Middle East, Africa, Eastern Europe, Latin A<p>merica, China, and the southern United States. Her influence is once again growing in Russia. Among the Roma, Binah is a goddess who is worshipped and revered.</p> <p>The card shows a connection or opposition to the Archon and/or its Principle. The bond might be in the present, the past, or something that is about to happen.</p>'
+		desc: '<p><i>This card represents the Archon Binah and the Principle of Community.</i></p> <p>Binah’s influence manifests as the family’s power over the individual, mistrust of the state and other authorities outside of the family, strengthened traditions, and the distrust of strangers.</p><p> Her grip is strong anywhere family ties are at their peak, including the Middle East, Africa, Eastern Europe, Latin America, China, and the southern United States. Her influence is once again growing in Russia. Among the Roma, Binah is a goddess who is worshipped and revered.</p> <p>The card shows a connection or opposition to the Archon and/or its Principle. The bond might be in the present, the past, or something that is about to happen.</p>'
 	},
 	9: {
 		id: 9,
@@ -77,7 +77,7 @@ export default {
 		arcana: 'Major',
 		color: null,
 		number: 7,
-		desc: '<p><i>This card represents the Archon Geburah and the Principle of Law.</i></p> Geburah’s influence generates bureaucratic institutions, stricter laws, increased policing, and societal control over its citizenry. Those so influenced yield to increased control, typically out of their fear of chaos.</p> <p>The Archon has a strong influence over legal systems of every kind. Lictors are often judges, chiefs of police, or lawyers. They have a great presence anywhere bureaucracy is strong, and where laws and rules are used to control people.</p> <p>The card shows a connection or opposition to the Archon and/or its Principle. The bond might be in the present, the past, or something that is about to happen.</p>'
+		desc: '<p><i>This card represents the Archon Geburah and the Principle of Law.</i></p><p> Geburah’s influence generates bureaucratic institutions, stricter laws, increased policing, and societal control over its citizenry. Those so influenced yield to increased control, typically out of their fear of chaos.</p> <p>The Archon has a strong influence over legal systems of every kind. Lictors are often judges, chiefs of police, or lawyers. They have a great presence anywhere bureaucracy is strong, and where laws and rules are used to control people.</p> <p>The card shows a connection or opposition to the Archon and/or its Principle. The bond might be in the present, the past, or something that is about to happen.</p>'
 	},
 	11: {
 		id: 11,
@@ -93,7 +93,7 @@ export default {
 		arcana: 'Major',
 		color: null,
 		number: 9,
-		desc: '<p><i>This card represents the Archon Netzach and the Principle of Victory.</i></p> <p>Netzach’s influence strengthens patriotism and nationalism, unites societies against a common enemy, and feeds the us-versus-them mentality. The righteous obliterate all that threaten them, strengthen their military, justify their violence in the name of the Greater Good, and incite people to arm themselves.</p> <p>His influence is strongest within the military, military academies, private armies, manufacturers of weapons, lobbyists, and mercenaries. Has his largest influence in North America.</p> <p>The card shows a connection or opposition to the Archon and/or its Principle. The bond might be in the present, the past, or something that is about to happen.</p>'
+		desc: '<p><i>This card represents the Archon Netzach and the Principle of Victory.</i></p> <p>Netzach’s influence strengthens patriotism and nationalism, unites societies against a common enemy, and feeds the <i>us-versus-them</i> mentality. The righteous obliterate all that threaten them, strengthen their military, justify their violence in the name of the Greater Good, and incite people to arm themselves.</p> <p>His influence is strongest within the military, military academies, private armies, manufacturers of weapons, lobbyists, and mercenaries. Has his largest influence in North America.</p> <p>The card shows a connection or opposition to the Archon and/or its Principle. The bond might be in the present, the past, or something that is about to happen.</p>'
 	},
 	13: {
 		id: 13,
