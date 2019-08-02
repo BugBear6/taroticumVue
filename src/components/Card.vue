@@ -1,6 +1,6 @@
 <template>
 	<div class="taroticum-card"
-		v-on:click="revealCard()">
+		v-on:click="onCardClick()">
 		<div class="taroticum-card__face"
 			v-if="!isRevealed && !alwaysReveal">
 			<img
@@ -9,25 +9,19 @@
 				alt="Back">
 		</div>
 		<div class="taroticum-card__face"
-			v-b-modal="getModalId()"
+			v-b-modal="modalId"
 			v-if="isRevealed || alwaysReveal">
 			<img
 				class="taroticum-card__img"
 				v-bind:src="getCardUrl()"
 				v-bind:alt="cardData.name">
 		</div>
-		<CardModal
-			v-bind:cardData="cardData"
-			v-bind:cardId="getModalId()"
-			v-bind:cardUrl="getCardUrl()"
-		/>
 	</div>
 </template>
 
 <script>
 import { BModal, VBModal } from 'bootstrap-vue';
-import CardModal from './CardModal';
-import { getCardFileName } from '../helpers/getCardObject';
+import { getCardUrl } from '../helpers/getCardObject';
 
 export default {
 	name: 'Card',
@@ -38,24 +32,30 @@ export default {
 	},
 	props: [
 		'cardData',
-		'alwaysReveal'
+		'alwaysReveal',
+		'addControls',
+		'modalId'
 	],
 	components: {
-		'b-modal': BModal,
-		CardModal
+		'b-modal': BModal
 	},
 	methods: {
-		revealCard() {
+		onCardClick() {
 			if (typeof this.alwaysReveal === 'undefined' || !this.alwaysReveal) {
-				this.isRevealed = true;
-				this.$emit('card-revealed');
+				this.revealCard();
+			}
+			if (this.alwaysReveal || this.isRevealed) {
+				this.$emit('card-selected', this.cardData);
 			}
 		},
 		getCardUrl() {
-			return `/img/tarot-cards/${getCardFileName(this.cardData.id)}`;
+			return getCardUrl(this.cardData.id);
 		},
 		getModalId() {
 			return `modal-${this.cardData.id}`;
+		},
+		revealCard() {
+			this.isRevealed = true;
 		}
 	}
 }

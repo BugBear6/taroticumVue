@@ -12,7 +12,8 @@
 				v-bind:key="index">
 				<Card
 					class="card--cards-list"
-					v-on:card-revealed="onCardRevealed"
+					v-on:card-selected="onCardSelected"
+					v-bind:modalId="modalId"
 					v-bind:cardData="card"
 				/>
 				<Template
@@ -25,6 +26,10 @@
 			<li class="card-item card-item-8"></li>
 			<li class="card-item card-item-9"></li>
 		</ul>
+		<CardModal
+			v-bind:cardData="cardSelected"
+			v-bind:modalId="modalId"
+		/>
 	</div>
 </template>
 
@@ -33,13 +38,16 @@ import Card from './Card';
 import Template from './Template';
 import { getCards } from '../helpers/getCards';
 import { getTemplateObj } from '../helpers/getTemplates';
+import CardModal from './CardModal';
 
 export default {
   name: 'ModeRitual',
 	data() {
 		return {
 			cards: [],
-			template: {}
+			template: {},
+			cardSelected: {},
+			modalId: 'modalRitual'
 		};
 	},
 	methods: {
@@ -49,8 +57,8 @@ export default {
 		addItemClass(index) {
 			return `card-item-${index+1}`;
 		},
-		onCardRevealed() {
-			// 
+		onCardSelected(newCardData) {
+			this.cardSelected = newCardData;
 		},
 		applyTemplate(templateId) {
 			if (templateId) {
@@ -62,7 +70,8 @@ export default {
 	},
 	components: {
 		Card,
-		Template
+		Template,
+		CardModal
 	},
 	created() {
 		this.cards = this.getCards()

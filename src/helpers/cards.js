@@ -21,7 +21,7 @@ export default {
 		arcana: 'Major',
 		color: null,
 		number: 0,
-		desc: '<p><i>This card represents the Awakened Man. The Path to Awakening and the true divine origin of humanity.</i></p><p>The card reveals a connection to an Awakened Man, the path to Awakening, or of some shard of divinity that lies hidden deep within or is traceable back to a previous life.</p><p>This card is one of the top three most powerful cards in the whole Arcana, along with the Demiurge and Astaroth, and always reveals something of great significance.</p><p>When this card is drawn, it might be suitable to draw an additional card and place on top of it to show how its power manifests itself.</p>'
+		desc: '<p><i>This card represents the Awakened Man. The Path to Awakening and the true divine origin of humanity.</i></p><p>The card reveals a connection to an Awakened Man, the path to Awakening, or of some shard of divinity that lies hidden deep within or is traceable back to a previous life.</p><p>This card is one of the top three most powerful cards in the whole Arcana, along with the <b><i>Demiurge</i></b> and <b><i>Astaroth</i></b>, and always reveals something of great significance.</p><p>When this card is drawn, it might be suitable to draw an additional card and place on top of it to show how its power manifests itself.</p>'
 	},
 	4: {
 		id: 4,

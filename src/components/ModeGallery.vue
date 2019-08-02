@@ -12,6 +12,8 @@
 				<b-card class="card-item border-0">
 					<Card
 						class="card--cards-list"
+						v-on:card-selected="onCardSelected"
+						v-bind:modalId="modalId"
 						v-bind:alwaysReveal="true"
 						v-bind:cardData="card"
 					/>
@@ -19,6 +21,11 @@
 				</b-card>
 			</b-col>
 		</b-row>
+		<CardModal
+			v-bind:cardData="cardSelected"
+			v-bind:modalId="modalId"
+			v-bind:addControls="true"
+		/>
 	</div>
 </template>
 
@@ -27,11 +34,14 @@ import Card from './Card';
 import ModeGalleryFilters from './ModeGalleryFilters';
 import { getAllCards } from '../helpers/getCards';
 import { BCard, BButton, BRow, BCol} from 'bootstrap-vue';
+import CardModal from './CardModal';
 
 export default {
 	name: 'ModeGallery',
 	data() {
 		return {
+			cardSelected: {},
+			modalId: 'modalGallery',
 			cards: getAllCards(),
 			filters: {
 				all: true,
@@ -72,8 +82,34 @@ export default {
 		updateSearchPhrase(newSearchPhrase) {
 			this.searchPhrase = newSearchPhrase
 		},
-		runSearch(newSearchPhrase) {
+		onCardSelected(newCardData) {
+			this.cardSelected = newCardData;
+		},
+		showNextCard() {
+			const currentCardIndex = this.cardsFiltered.findIndex(cardObj => cardObj.id === this.cardSelected.id);
+			const lastCardIndex = this.cardsFiltered.length - 1;
+			let newCardIndex;
 
+			if (currentCardIndex === lastCardIndex) {
+				newCardIndex = 0
+			} else {
+				newCardIndex = currentCardIndex + 1;
+			}
+			console.log('next card', this.cardsFiltered[newCardIndex])
+			this.cardSelected = this.cardsFiltered[newCardIndex];
+		},
+		showPrevCard() {
+			const currentCardIndex = this.cardsFiltered.findIndex(cardObj => cardObj.id === this.cardSelected.id);
+			const lastCardIndex = this.cardsFiltered.length - 1;
+			let newCardIndex;
+
+			if (currentCardIndex === 0) {
+				newCardIndex = lastCardIndex;
+			} else {
+				newCardIndex = currentCardIndex - 1;
+			}
+			console.log('prev card', this.cardsFiltered[newCardIndex])
+			this.cardSelected = this.cardsFiltered[newCardIndex];
 		}
 	},
 	computed: {
@@ -110,6 +146,9 @@ export default {
 	created() {
 		this.$root.$on('toggle-filter', this.toggleFilter);
 		this.$root.$on('update-search-phrase', this.updateSearchPhrase);
+
+		this.$root.$on('show-next-card', this.showNextCard);
+		this.$root.$on('show-prev-card', this.showPrevCard);
 	},
 	watch: {
 		searchPhrase(newSearchPhrase) {
@@ -118,6 +157,7 @@ export default {
 	},
 	components: {
 		Card,
+		CardModal,
 		ModeGalleryFilters,
 		'b-row': BRow,
 		'b-col': BCol,
