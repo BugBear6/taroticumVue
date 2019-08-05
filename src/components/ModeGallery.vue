@@ -145,7 +145,10 @@ export default {
 		this.$root.$on('toggle-filter', this.toggleFilter);
 		this.$root.$on('update-search-phrase', this.updateSearchPhrase);
 
+		this.$root.$on('show-prev-card', this.showPrevCard);
 		this.$root.$on('left-arrow-pressed', this.showPrevCard);
+
+		this.$root.$on('show-next-card', this.showNextCard);
 		this.$root.$on('right-arrow-pressed', this.showNextCard);
 	},
 	watch: {

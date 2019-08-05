@@ -5,7 +5,8 @@ const getCardFileName = cardNumber => {
 };
 
 export const getCardUrl = cardId => {
-	return `/img/tarot-cards/${getCardFileName(cardId)}`;
+	const rootPath = '/img/tarot-cards/'
+	return `${rootPath}${getCardFileName(cardId)}`;
 };
 
 
