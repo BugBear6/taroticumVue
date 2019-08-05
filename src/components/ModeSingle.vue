@@ -8,6 +8,8 @@
 			v-bind:cardData="cardSelected"
 			v-bind:modalId="modalId"
 			v-bind:addControls="false"
+			v-bind:preferedModalTab="preferedModalTab"
+			v-on:change-prefered-tab="changePreferedModalTab"
 		/>
 	</div>
 </template>
@@ -32,6 +34,7 @@ export default {
 			card: null,
 			cardSelected: {},
 			modalId: 'modalSingle',
+			preferedModalTab: ''
 		};
 	},
 	methods: {
@@ -40,6 +43,9 @@ export default {
 		},
 		onCardSelected(newCardData) {
 			this.cardSelected = newCardData;
+		},
+		changePreferedModalTab(tabName) {
+			this.preferedModalTab = tabName;
 		}
 	},
 		created() {

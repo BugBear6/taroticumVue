@@ -29,6 +29,9 @@
 		<CardModal
 			v-bind:cardData="cardSelected"
 			v-bind:modalId="modalId"
+			v-bind:addControls="false"
+			v-bind:preferedModalTab="preferedModalTab"
+			v-on:change-prefered-tab="changePreferedModalTab"
 		/>
 	</div>
 </template>
@@ -47,7 +50,8 @@ export default {
 			cards: [],
 			template: {},
 			cardSelected: {},
-			modalId: 'modalRitual'
+			modalId: 'modalRitual',
+			preferedModalTab: ''
 		};
 	},
 	methods: {
@@ -66,6 +70,9 @@ export default {
 			} else {
 				this.template = {};
 			}
+		},
+		changePreferedModalTab(tabName) {
+			this.preferedModalTab = tabName;
 		}
 	},
 	components: {

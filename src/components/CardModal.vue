@@ -13,7 +13,8 @@
 				/>
 				<b-tab
 					title="Card Data"
-					active
+					v-on:click="changePreferedModalTab('cardData')"
+					v-bind:active="isTabPreferred('cardData')"
 					class="card-modal__content">
 					<div class="card-modal--split">
 						<div class="left">
@@ -38,6 +39,8 @@
 				</b-tab>
 				<b-tab
 					title="Description"
+					v-on:click="changePreferedModalTab('description')"
+					v-bind:active="isTabPreferred('description')"
 					class="card-modal__content">
 					<CardModalArcanaData
 						v-bind:arcana="cardData.arcana"
@@ -49,7 +52,9 @@
 					</div>
 				</b-tab>
 				<b-tab
-					title="Image">
+					title="Image"
+					v-on:click="changePreferedModalTab('image')"
+					v-bind:active="isTabPreferred('image')">
 					<div class="card-modal__img-holder">
 						<img
 							class="card-modal__img"
@@ -75,7 +80,8 @@ export default {
 		'cardData',
 		'cardId',
 		'addControls',
-		'modalId'
+		'modalId',
+		'preferedModalTab'
 	],
 	components: {
 		CardModalArcanaData,
@@ -90,6 +96,20 @@ export default {
 		},
 		getCardUrl() {
 			return getCardUrl(this.cardData.id);
+		},
+		isTabPreferred(tabName) {
+			if (this.preferedModalTab) {
+				if (this.preferedModalTab === tabName) {
+					return true;
+				}
+			} else {
+				if (tabName === 'cardData') {
+					return true;
+				}
+			}
+		},
+		changePreferedModalTab(tabName) {
+			this.$emit('change-prefered-tab', tabName);
 		}
 	}
 }

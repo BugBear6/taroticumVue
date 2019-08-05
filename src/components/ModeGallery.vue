@@ -24,6 +24,8 @@
 		<CardModal
 			v-bind:cardData="cardSelected"
 			v-bind:modalId="modalId"
+			v-bind:preferedModalTab="preferedModalTab"
+			v-on:change-prefered-tab="changePreferedModalTab"
 			v-bind:addControls="true"
 		/>
 	</div>
@@ -42,6 +44,7 @@ export default {
 		return {
 			cardSelected: {},
 			modalId: 'modalGallery',
+			preferedModalTab: '',
 			cards: getAllCards(),
 			filters: {
 				all: true,
@@ -108,6 +111,9 @@ export default {
 				newCardIndex = currentCardIndex - 1;
 			}
 			this.cardSelected = this.cardsFiltered[newCardIndex];
+		},
+		changePreferedModalTab(tabName) {
+			this.preferedModalTab = tabName;
 		}
 	},
 	computed: {

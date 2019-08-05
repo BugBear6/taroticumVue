@@ -1,6 +1,6 @@
 import cards from './cards';
 
-const rootPath = '/img/tarot-cards/'
+const rootPath = '/taroticum/img/tarot-cards/'
 
 const getCardFileName = cardNumber => {
 	return `card_${cardNumber}.jpg`;
