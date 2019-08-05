@@ -100,11 +100,11 @@ export default {
 	display: grid;
 	grid-template-columns: auto auto auto;
 	grid-template-rows: auto auto auto;
-	grid-gap: 15px 20px;
+	grid-gap: 10px 15px;
 	justify-content: center;
 }
 .cards-list--template-selected {
-	grid-gap: 2px;
+	grid-gap: 4px;
 }
 .card-item {
 	display: flex;

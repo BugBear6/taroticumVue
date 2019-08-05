@@ -15,7 +15,7 @@ export default {
 
 <style>
 .template {
-	width: 225px;
+	max-width: 225px;
 	padding: 5px 0 0 0;
 	font-size: 15px;
 	text-align: center;
