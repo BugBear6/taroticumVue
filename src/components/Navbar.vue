@@ -6,13 +6,13 @@
 				to="/"
 				v-if="$route.name!=='select'">Return</router-link>
 			<TemplatesDropdown
-				v-if="$route.name==='ritual'"
+				v-if="$route.name === 'ritual'"
 			/>
 		</li>
 		<li>
 			<a href=""
 				v-on:click="refreshRoute"
-				v-if="$route.name!=='select'">Refresh</a>
+				v-if="$route.name === 'ritual' || $route.name === 'single'">Refresh</a>
 		</li>
 	</ul>
 </div>

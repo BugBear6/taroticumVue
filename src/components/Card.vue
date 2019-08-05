@@ -5,7 +5,7 @@
 			v-if="!isRevealed && !alwaysReveal">
 			<img
 				class="taroticum-card__img"
-				src="/img/tarot-cards/back.jpg"
+				v-bind:src="getCardBackUrl()"
 				alt="Back">
 		</div>
 		<div class="taroticum-card__face"
@@ -21,7 +21,7 @@
 
 <script>
 import { BModal, VBModal } from 'bootstrap-vue';
-import { getCardUrl } from '../helpers/getCardObject';
+import { getCardUrl, getCardBackUrl } from '../helpers/getCardObject';
 
 export default {
 	name: 'Card',
@@ -50,6 +50,9 @@ export default {
 		},
 		getCardUrl() {
 			return getCardUrl(this.cardData.id);
+		},
+		getCardBackUrl() {
+			return getCardBackUrl();
 		},
 		getModalId() {
 			return `modal-${this.cardData.id}`;

@@ -1,12 +1,17 @@
 import cards from './cards';
 
+const rootPath = '/img/tarot-cards/'
+
 const getCardFileName = cardNumber => {
 	return `card_${cardNumber}.jpg`;
 };
 
 export const getCardUrl = cardId => {
-	const rootPath = '/img/tarot-cards/'
 	return `${rootPath}${getCardFileName(cardId)}`;
+};
+
+export const getCardBackUrl = () => {
+	return `${rootPath}back.jpg`;
 };
 
 
