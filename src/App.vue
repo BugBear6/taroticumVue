@@ -14,6 +14,18 @@ export default {
 	name: 'app',
 	components: {
 		Navbar
+	},
+	mounted: function() {
+		var vm = this;
+		window.addEventListener('keyup', event => {
+			// Arrow Left
+			if (event.keyCode === 37) {
+				vm.$root.$emit('left-arrow-pressed');
+			// Arrow Right
+			} else if (event.keyCode === 39) {
+				vm.$root.$emit('right-arrow-pressed');
+			}
+		});
 	}
 }
 </script>

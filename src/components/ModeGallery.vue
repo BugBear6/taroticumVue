@@ -95,7 +95,6 @@ export default {
 			} else {
 				newCardIndex = currentCardIndex + 1;
 			}
-			console.log('next card', this.cardsFiltered[newCardIndex])
 			this.cardSelected = this.cardsFiltered[newCardIndex];
 		},
 		showPrevCard() {
@@ -108,7 +107,6 @@ export default {
 			} else {
 				newCardIndex = currentCardIndex - 1;
 			}
-			console.log('prev card', this.cardsFiltered[newCardIndex])
 			this.cardSelected = this.cardsFiltered[newCardIndex];
 		}
 	},
@@ -147,8 +145,8 @@ export default {
 		this.$root.$on('toggle-filter', this.toggleFilter);
 		this.$root.$on('update-search-phrase', this.updateSearchPhrase);
 
-		this.$root.$on('show-next-card', this.showNextCard);
-		this.$root.$on('show-prev-card', this.showPrevCard);
+		this.$root.$on('left-arrow-pressed', this.showPrevCard);
+		this.$root.$on('right-arrow-pressed', this.showNextCard);
 	},
 	watch: {
 		searchPhrase(newSearchPhrase) {
