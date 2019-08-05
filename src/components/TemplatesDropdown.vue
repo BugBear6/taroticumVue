@@ -12,18 +12,19 @@
 			</b-dropdown-text>
 			<b-dropdown-divider></b-dropdown-divider>
 			<b-dropdown-item
-				v-bind:active="!selectedTemplateId">
+				v-bind:active="selectedTemplateId === 'NONE'">
 					<div class="templates-dropdown__item-content">
 						None
 						<b-button
 							pill
-							v-if="selectedTemplateId"
-							v-on:click.stop="applyTemplate(null)"
+							variant="primary"
+							v-if="selectedTemplateId !== 'NONE'"
+							v-on:click.stop="applyTemplate('NONE')"
 							size="sm">Apply</b-button>
 					</div>
 				</b-dropdown-item>
 			<b-dropdown-divider></b-dropdown-divider>
-			<b-dropdown-item v-for="(template, index) in templatesList"
+			<b-dropdown-item v-for="(template, index) in templatesListWithoutNone"
 				v-bind:key="index"
 				v-bind:active="template.id === selectedTemplateId"
 				v-b-modal="template.id">
@@ -37,6 +38,7 @@
 							size="sm">Apply</b-button>
 					</div>
 				<TemplatesModal
+					v-if="template.id !== 'NONE'"
 					v-bind:applyTemplate="applyTemplate"
 					v-bind:templateId="template.id" />
 			</b-dropdown-item>
@@ -62,8 +64,13 @@ export default {
 	data() {
 		return {
 			templatesList: getTemplatesList(),
-			selectedTemplateId: null
+			selectedTemplateId: 'NONE'
 		};
+	},
+	computed: {
+		templatesListWithoutNone() {
+			return this.templatesList.filter((templateObj => templateObj.id !== 'NONE'));
+		}
 	},
 	methods: {
 		applyTemplate(templateId) {

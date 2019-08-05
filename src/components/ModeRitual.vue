@@ -1,11 +1,11 @@
 <template>
 	<div class="mode-ritual">
 		<p class="selected-template-info"
-			v-bind:class="{ 'text-muted': !template.name }">
+			v-bind:class="{ 'text-muted': template.id === 'NONE' }">
 			<strong>Selected template:</strong> {{template.name ? template.name : 'None'}}
 		</p>
 		<ul class="cards-list"
-			v-bind:class="{ 'cards-list--template-selected': template.name} ">
+			v-bind:class="{ 'cards-list--template-selected': template.id !== 'NONE'} ">
 			<li v-for="(card, index) in cards"
 				class="card-item"
 				v-bind:class="addItemClass(index)"
@@ -17,7 +17,6 @@
 					v-bind:cardData="card"
 				/>
 				<Template
-					v-if="template.name"
 					v-bind:desc="template.cards[index+1]"
 				/>
 			</li>
@@ -48,7 +47,7 @@ export default {
 	data() {
 		return {
 			cards: [],
-			template: {},
+			template: getTemplateObj('NONE'),
 			cardSelected: {},
 			modalId: 'modalRitual',
 			preferedModalTab: ''
@@ -68,7 +67,7 @@ export default {
 			if (templateId) {
 				this.template = getTemplateObj(templateId);
 			} else {
-				this.template = {};
+				this.template = getTemplateObj('NONE');
 			}
 		},
 		changePreferedModalTab(tabName) {

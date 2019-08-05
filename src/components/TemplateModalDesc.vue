@@ -3,7 +3,7 @@
 		<ul class="template-modal-desc__list">
 			<li v-for="(x, index) in ArrLength" v-bind:key="index+1">
 				<p class="template-modal-desc__text">
-					<span class="template-modal-desc--card-no">Card {{index+1}}:</span>&nbsp;<span v-html="templateData.cards[index+1]"></span>
+					<span v-html="templateData.cards[index+1]"></span>
 				</p>
 			</li>
 		</ul>
@@ -27,9 +27,6 @@ export default {
 <style>
 .template-modal-desc__list {
 	list-style: none;
-}
-.template-modal-desc--card-no {
-	font-weight: bold;
 }
 .template-modal-desc__text {
 	margin-bottom: 6px;
